@@ -15,8 +15,18 @@
   }
 
   @media screen and (max-width: 760px) {
+    padding-top: 12vh;
+    padding-left: 5%;
+
     .navigate__box {
-      font-size: 24px;
+      font-size: 32px !important;
+
+      .to {
+        display: block;
+        h2 {
+          font-size: 32px !important;
+        }
+      }
     }
   }
 }

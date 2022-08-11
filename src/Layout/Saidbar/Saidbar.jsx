@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Saidbar.scss";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   HeartOutlined,
   ShoppingCartOutlined,
@@ -14,15 +15,24 @@ const Saidbar = () => {
   const showLibrory = () => {
     swichToggled ? setSwichToggled(false) : setSwichToggled(true);
   };
+
+  const userProfile = localStorage.getItem("user");
+  let user = JSON.parse(userProfile);
+
   return (
     <div className="saidbar">
-      <div className="item">
-        <h2 className="open" onClick={showLibrory}>
+      <div className={swichToggled ? "item" : "item-shadow"}>
+        <h2 className="open">
           {" "}
-          {swichToggled ? <CloseOutlined /> : <UnorderedListOutlined />}
+          {swichToggled ? (
+            <CloseOutlined onClick={showLibrory} />
+          ) : (
+            <UnorderedListOutlined onClick={showLibrory} />
+          )}
         </h2>
         <div className="icons">
           <HeartOutlined
+            className="saidbar-open"
             style={{ fontSize: 28, marginLeft: 10, cursor: "pointer" }}
           />
           <Link to="/cart">
@@ -40,20 +50,52 @@ const Saidbar = () => {
 
       <div className={swichToggled ? "hideLibrary" : "showLibrary"}>
         <h3>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" onClick={showLibrory} className="saidbar-item">
+            Home
+          </NavLink>
         </h3>
 
         <h3>
-          <NavLink to="/categories"> Categories</NavLink>
+          <NavLink
+            to="/categories"
+            onClick={showLibrory}
+            className="saidbar-item"
+          >
+            {" "}
+            Categories
+          </NavLink>
         </h3>
         <h3>
-          <NavLink to="/catalog"> Catalog</NavLink>
+          <NavLink to="/catalog" onClick={showLibrory} className="saidbar-item">
+            {" "}
+            Catalog
+          </NavLink>
         </h3>
-        <h3>О нас</h3>
+        {user ? (
+          <h3>
+            <NavLink
+              to="/checkout"
+              onClick={showLibrory}
+              className="saidbar-item"
+            >
+              {" "}
+              Checkout
+            </NavLink>
+          </h3>
+        ) : (
+          ""
+        )}
 
         <div className="contact">
           <h3>
-            <PhoneOutlined /> +7 (966) 55 88 499
+            <PhoneOutlined />{" "}
+            <a
+              href="tel:+99897 111-57-52"
+              className="link"
+              onClick={showLibrory}
+            >
+              (97) 007-57-52
+            </a>
           </h3>
         </div>
       </div>

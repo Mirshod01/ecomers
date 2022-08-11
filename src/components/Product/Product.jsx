@@ -2,12 +2,13 @@ import React from "react";
 import Carusel from "../Carusel/Carusel";
 import "./Product.scss";
 import "../../assets/styles/main.css";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   return (
     <div className="container">
       <div className="product">
-        <div className="carusel">
+        <div className="carusel-box">
           <Carusel />
         </div>
         <div className="main-item">
@@ -22,7 +23,9 @@ const Product = () => {
             <h4>price:</h4>
             <h2> 25.999 $</h2>
           </div>
-          <span className="btn">Buy now</span>
+          <Link to="/catalog/recZkNf2kwmdBcqd0">
+            <span className="btn">Buy now</span>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../../assets/images/LogoTop.png";
 import "./Navbar.scss";
 import "../../assets/styles/main.css";
@@ -6,9 +6,26 @@ import { Link, NavLink } from "react-router-dom";
 import { Badge } from "antd";
 import { useSelector } from "react-redux";
 import { PhoneOutlined, HeartOutlined } from "@ant-design/icons";
+import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
+import PersonRemoveOutlinedIcon from "@mui/icons-material/PersonRemoveOutlined";
+import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../../components/Loading/Loading";
 
 const Navbar = () => {
   const setActive = ({ isActive }) => (isActive ? "active" : "");
+
+  const { loginWithRedirect, isAuthenticated, logout, user, isLoading } =
+    useAuth0();
+  const [myUser, setMyUser] = useState(null);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setMyUser(user);
+      // localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      setMyUser(false);
+    }
+  }, [isAuthenticated]);
 
   const allProductsStok = useSelector((state) => state.cartPage.cartProducts);
 
@@ -20,6 +37,10 @@ const Navbar = () => {
     result += stock[i];
   }
 
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+  let nma = true;
   return (
     <div className="nav">
       <div className="container">
@@ -29,28 +50,39 @@ const Navbar = () => {
           </NavLink>
           <ul>
             <li>
-              <NavLink to="/" className="link">
+              <NavLink to="/" className={"link"}>
                 Home
               </NavLink>
             </li>
-
             <li>
-              <NavLink to="/categories" className={(setActive, "link")}>
+              <NavLink to="/categories" className={"link"}>
                 {" "}
                 Categories
               </NavLink>
             </li>
             <li>
-              <NavLink to="/catalog" className="link">
+              <NavLink to="/catalog" className={"link"}>
                 {" "}
                 Catalog
               </NavLink>
             </li>
-            <li>About us</li>
+            {nma === true ? (
+              <li>
+                <NavLink to="/checkout" className={"link"}>
+                  {" "}
+                  Checkout
+                </NavLink>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
           <div className="row">
-            <p>
-              <PhoneOutlined /> +7 (966) 55 88 499
+            <p className="phone">
+              <PhoneOutlined className="phone-icon" />
+              <a href="tel:+99897 111-57-52" className="phone-icon">
+                (97) 007-57-52
+              </a>
             </p>
             <div className="icons">
               <div className="icon">
@@ -65,6 +97,29 @@ const Navbar = () => {
                   </Badge>
                 </Link>
               </div>
+
+              {/* {user ? ( */}
+              {nma ? (
+                <div
+                  className="icon"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  <PersonRemoveOutlinedIcon className="icaon-name" />
+                  {/* <svg data-testid="DeleteIcon"></svg> */}
+                </div>
+              ) : (
+                <div
+                  className="icon"
+                  onClick={() => {
+                    loginWithRedirect();
+                  }}
+                >
+                  <PersonAddAltOutlinedIcon className="icaon-name" />
+                  {/* <svg data-testid="DeleteIcon"></svg> */}
+                </div>
+              )}
             </div>
           </div>
         </div>

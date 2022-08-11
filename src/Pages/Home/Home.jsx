@@ -7,7 +7,6 @@ import Product from "../../components/Product/Product";
 import Report from "../../components/Report/Report";
 import Service from "../../components/Service/Service";
 
-
 const Home = () => {
   return (
     <div>

@@ -15,7 +15,7 @@ const CatalogProductsFilter = () => {
       <div className="filter-input-text">
         <input
           type="text"
-          className="input-text"
+          className="input-text-item"
           name="text"
           placeholder="search"
           value={filterValues.text}

@@ -4,11 +4,16 @@ const CatalogProductsSort = ({ productsLength, newData, setNewData }) => {
   const sortProducts = (event) => {
     let data = newData;
     if (event.target.value === "ABD") {
-      setNewData(data.sort());
-      console.log(data);
+      data = data.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+      setNewData(data);
     }
     if (event.target.value === "DBA") {
-      setNewData(data.reverse());
+      data = data.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+      setNewData(data);
     }
 
     if (event.target.value === "Highest") {

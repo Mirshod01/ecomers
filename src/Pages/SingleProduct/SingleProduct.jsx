@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Rate } from "antd";
 import "./SingleProduct.scss";
-import Loader from "../Loader/Loader";
 import { useSelector, useDispatch } from "react-redux";
+import Navigate from "../../components/Navigate/Navigate";
+import { formatPrice } from "../../Utils/constants";
 import {
   getSingleProduct,
   removeSingleProduct,
   addProductToCart,
 } from "../../redux/action-creator/cart";
-import Navigate from "../../components/Navigate/Navigate";
+import Loading from "../../components/Loading/Loading";
 
 const SingleProduct = () => {
   const singleProduct = useSelector((state) => state.cartPage.singleProduct);
@@ -39,7 +40,6 @@ const SingleProduct = () => {
     images,
     stock,
   } = singleProduct;
-  console.log(colors?.[0]);
   const incrementProduct = () => {
     let amount = stock;
     if (amount > productNumber) {
@@ -58,7 +58,7 @@ const SingleProduct = () => {
   return (
     <div>
       {Object.keys(singleProduct).length === 0 ? (
-        <Loader />
+        <Loading />
       ) : (
         <div>
           <Navigate product={name} />
@@ -82,7 +82,7 @@ const SingleProduct = () => {
                       />
                       <p>({reviews} customer reviews)</p>
                     </div>
-                    <h3>{price / 100} $</h3>
+                    <h3>{formatPrice(price)} </h3>
                     <p>{description}</p>
                     <div className="product__detail__main__info">
                       <b>Available :</b>{" "}

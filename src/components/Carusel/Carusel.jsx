@@ -28,7 +28,7 @@ const Carusel = () => (
         />
       </h3>
     </div>
-    <div>
+    <div className="carusels">
       <h3 className="carusel">
         <img
           src={
@@ -39,7 +39,7 @@ const Carusel = () => (
         />
       </h3>
     </div>
-    <div>
+    <div className="carusels">
       <h3 className="carusel">
         <img
           src={
@@ -50,7 +50,7 @@ const Carusel = () => (
         />
       </h3>
     </div>
-    <div>
+    <div className="carusels">
       <h3 className="carusel">
         <img
           src={

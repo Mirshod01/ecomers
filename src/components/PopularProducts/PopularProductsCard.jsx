@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import "../../assets/styles/main.css";
 import { Image } from "antd";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../Utils/constants";
 
 const PopularProductsCard = ({
   image,
@@ -35,8 +36,10 @@ const PopularProductsCard = ({
                 </div>
               </div>
               <div className="price">
-                <h3 className="card-price">{price} $</h3>
-                <h4 className="last-price">{Math.floor(price * 1.1)} $</h4>
+                <h3 className="card-price">{formatPrice(price)} </h3>
+                <h4 className="last-price">
+                  {formatPrice(Math.floor(price * 1.1))}
+                </h4>
               </div>
             </div>
           </Link>

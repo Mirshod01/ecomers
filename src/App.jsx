@@ -1,14 +1,15 @@
 import Layout from "./Layout/Layout";
 import Home from "./Pages/Home";
 import NoteFound from "./Pages/NoteFound";
-import Categories from "./Pages/Categories/Categories";
-import Catalog from "./Pages/Catalog/Catalog";
+import Categories from "./Pages/Categories";
+import Catalog from "./Pages/Catalog";
+import SingleProduct from "./Pages/SingleProduct/SingleProduct";
+import CheckOut from "./Pages/CheckOut/CheckOut";
+import Cart from "./Pages/Cart/Cart";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProducts } from "./redux/action-creator/product";
 import { useEffect } from "react";
-import SingleProduct from "./Pages/SingleProduct/SingleProduct";
-import Cart from "./Pages/Cart/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
   return (
     <>
       <Routes>
@@ -29,7 +31,9 @@ function App() {
           <Route path="catalog" element={<Catalog />} />
           <Route path="cart" element={<Cart />} />
           <Route path="catalog/:id/" element={<SingleProduct />} />
+          <Route path="checkout" element={<CheckOut />} />
         </Route>
+
         <Route path="*" element={<NoteFound />} />
       </Routes>
     </>

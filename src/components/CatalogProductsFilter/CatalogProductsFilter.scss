@@ -2,12 +2,12 @@
   margin-right: var(--margin-50);
   position: -webkit-sticky;
   position: sticky;
-  top: 1rem;
-  margin-bottom: var(--margin-100);
+  top: 2rem;
+  margin-bottom: var(--margin-50);
 
   .filter-input-text {
     margin-bottom: 1rem;
-    .input-text {
+    .input-text-item {
       border: none;
       background-color: var(--clr-blue-4);
       padding: 5px 10px;

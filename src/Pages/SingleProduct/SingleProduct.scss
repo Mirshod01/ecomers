@@ -80,3 +80,28 @@
     }
   }
 }
+@media screen and (max-width: 760px) {
+  .single__product {
+    width: 90%;
+    margin: auto;
+    height: 100%;
+    .single__product__box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      .product__detail {
+        display: block;
+        .product__detail__images {
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        .product__detail__main {
+          width: 100%;
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+}

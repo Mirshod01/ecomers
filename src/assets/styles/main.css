@@ -151,9 +151,9 @@ ul {
 }
 
 .container {
-  max-width: 90vw;
+  max-width: 1445px;
   margin: auto;
-  padding: 0px 5vw;
+  padding: 0px 50px;
 }
 
 .section-center {
@@ -165,7 +165,8 @@ ul {
 
 @media screen and (max-width: 992px) {
   .container {
-    max-width: 95vw;
+    padding: 0;
+    max-width: 90%;
     margin: auto;
   }
 }

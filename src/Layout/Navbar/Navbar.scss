@@ -1,7 +1,9 @@
 .nav {
   background: #ffffff;
   box-shadow: var(--shadow);
-  padding: 1rem;
+  margin: 1rem;
+  box-shadow: none;
+
   .row {
     display: flex;
     justify-content: space-between;
@@ -13,6 +15,7 @@
       display: flex;
       padding: 0px;
       height: 25px;
+      margin: 0px;
       li {
         margin: 0px 10px;
         padding-bottom: 5px;
@@ -30,12 +33,19 @@
         }
       }
     }
-    p {
+    .phone {
       margin: 0px;
       padding-bottom: 5px;
       cursor: pointer;
       &:hover {
         color: var(--clr-blue-3);
+        .phone-icon {
+          color: var(--clr-blue-3);
+        }
+      }
+      .phone-icon {
+        margin: 0px 3px;
+        color: var(--clr-black);
       }
     }
 
@@ -47,26 +57,20 @@
       .icon {
         margin: 0px 3px;
         color: var(--clr-black);
+        .icaon-name {
+          color: black;
+          margin-left: 8px;
+        }
         &:hover {
           color: var(--clr-blue-3);
+          .icaon-name {
+            color: var(--clr-blue-3);
+          }
         }
       }
     }
   }
   @media screen and (max-width: 760px) {
     display: none;
-  }
-}
-
-.top-site {
-  background-color: var(--clr-black);
-  text-align: center;
-  p {
-    margin: 0px;
-    color: var(--clr-white);
-    padding: 10px 0px;
-  }
-  @media screen and (max-width: 760px) {
-    overflow-x: hidden;
   }
 }

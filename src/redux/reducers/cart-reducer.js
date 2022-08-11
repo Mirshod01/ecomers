@@ -10,6 +10,7 @@ import {
 let initialState = {
   singleProduct: {},
   cartProducts: [],
+  user: {},
 };
 
 export const cartReducer = (state = initialState, { type, payload }) => {
@@ -58,6 +59,7 @@ export const cartReducer = (state = initialState, { type, payload }) => {
               id: payload.color + payload.product.id,
               image: payload.product.images[0].url,
               name: payload.product.name,
+              subtotal: payload.stock * payload.product.price,
             },
           ],
         };
@@ -66,11 +68,9 @@ export const cartReducer = (state = initialState, { type, payload }) => {
       const newCartItem = state.cartProducts.map((item) => {
         if (item.id === payload.id) {
           item.stock = payload.stock;
+          item.subtotal = item.price * payload.stock;
         }
-        return {
-          ...item,
-          stock: payload.stock,
-        };
+        return item;
       });
       return {
         ...state,
@@ -89,6 +89,7 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         ...state,
         cartProducts: [],
       };
+
     default:
       return state;
   }

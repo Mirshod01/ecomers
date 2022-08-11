@@ -36,7 +36,7 @@ const CatalogProducts = () => {
         ) {
           exact = false;
         }
-        if (filterValues.max_price && e.price / 100 > filterValues.max_price) {
+        if (filterValues.max_price && e.price > filterValues.max_price) {
           exact = false;
         }
         if (!e.shipping && filterValues.shipping) {
@@ -55,14 +55,19 @@ const CatalogProducts = () => {
             <CatalogProductsFilter />
           </div>
           <div className="catalog-sort-box">
-            <CatalogProductsSort
-              productsLength={newData.length}
-              newData={[...newData]}
-              setNewData={(data) => {
-                setNewData(data);
-              }}
-            />
-            {newData.length == 0 ? (
+            {newData ? (
+              <CatalogProductsSort
+                productsLength={newData.length}
+                newData={[...newData]}
+                setNewData={(data) => {
+                  setNewData(data);
+                }}
+              />
+            ) : (
+              "loading..."
+            )}
+
+            {newData.length === 0 ? (
               <p>Sorry, no products matched your search.</p>
             ) : (
               <div className="catalog-products-box">

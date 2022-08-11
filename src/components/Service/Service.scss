@@ -24,7 +24,12 @@
     }
   }
   @media screen and (max-width: 760px) {
-    margin: var(--margin-100) 0px var(--margin-50) 0px;
+    h1 {
+      width: 60vw;
+      text-align: center;
+      margin: 50px auto;
+    }
+    margin: var(--margin-50) 0px var(--margin-50) 0px;
     justify-content: center;
     .box {
       margin-left: 20px;

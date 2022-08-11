@@ -7,15 +7,15 @@ export const Navigate = ({ title, product }) => {
     <div className="navigate">
       <div className="container">
         <div className="navigate__box">
-          <Link to="/">Home</Link>
+          <Link to="/">Home/</Link>
 
           {product ? (
             <div className="to">
-              <Link to="/catalog">{"/Catalog "}</Link>
-              <h2>/{product}</h2>
+              <Link to="/catalog">{"Catalog/ "}</Link>
+              <h2>{product}</h2>
             </div>
           ) : (
-            <p>{title.slice(0, 2).toUpperCase() + title.slice(2)}</p>
+            <p>{title.slice(1, 2).toUpperCase() + title.slice(2)}</p>
           )}
         </div>
       </div>

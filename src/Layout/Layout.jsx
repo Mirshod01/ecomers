@@ -1,17 +1,15 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
-import Topside from "./Navbar/TopSite";
 import Saidbar from "./Saidbar/Saidbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer/Footer";
 
-const Layout = () => {
+const Layout = ({ myUser }) => {
   return (
     <>
       <div>
-        <Topside />
-        <Navbar />
-        <Saidbar />
+        <Navbar myUser={myUser} />
+        <Saidbar myUser={myUser} />
       </div>
       <div>
         <Outlet />
